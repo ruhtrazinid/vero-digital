@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Vero Digital - Design System & Folha de Estilos
+   Cores: Amarelo Mostarda (#F5A623), Azul Noite (#1A182E), Branco (#FFFFFF)
+   ========================================================================== */
+
+/* 1. Reset e Prevenção Rigorosa de Rolagem Horizontal */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1A182E;
+  background-color: #FFFFFF;
+  line-height: 1.6;
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografia de Destaque */
+.font-brand {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Variáveis do Tema */
+:root {
+  --color-yellow: #F5A623;
+  --color-yellow-hover: #E69516;
+  --color-dark: #1A182E;
+  --color-dark-deep: #121021;
+  --color-dark-card: #23203D;
+  --color-white: #FFFFFF;
+  --color-surface: #F8F9FB;
+  --color-border: #E5E7EB;
+  --color-text-muted: #4B5563;
+  --shadow-sm: 0 2px 8px rgba(26, 24, 46, 0.04);
+  --shadow-card: 0 12px 30px -6px rgba(26, 24, 46, 0.08);
+  --shadow-glow: 0 10px 25px -5px rgba(245, 166, 35, 0.4);
+}
+
+/* Utilitários de Quebra e Contenção Mobile */
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+img, svg, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, a, button {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Botões Customizados */
+.btn-primary {
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-glow);
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-yellow-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface);
+  border-color: #cbd5e1;
+}
+
+/* Efeito Glow Hero */
+.hero-radial-bg {
+  background: radial-gradient(circle at 50% 10%, rgba(245, 166, 35, 0.12) 0%, rgba(255, 255, 255, 0) 65%);
+}
+
+/* Cardápio Interativo */
+.category-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 0.65rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+.category-chip.active {
+  background-color: var(--color-dark);
+  color: #FFFFFF;
+  border-color: var(--color-dark);
+}
+
+/* Animações Sutis */
+@keyframes softPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.pulse-badge {
+  animation: softPulse 2.8s infinite ease-in-out;
+}
+
+/* Botão Flutuante WhatsApp */
+.wa-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  text-decoration: none;
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.wa-float:hover {
+  transform: scale(1.08);
+  background-color: #20BA59;
+}
+
+.wa-float-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: #F5A623;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+}
+
+/* Rolagem suave em toda a página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Transições universais suaves em botões, links e cards */
+a, button, .card-hover, .interactive-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Microinteração elegante ao passar o mouse nos cards */
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(26, 24, 46, 0.12);
+}
+
+/* Estado inicial para elementos com efeito de surgimento */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Estado ativo quando o elemento entra na tela */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

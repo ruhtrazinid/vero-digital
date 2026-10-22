@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Vero Digital - Soluções digitais completas para negócios locais: cardápios digitais interativos sem taxas, sites de alta conversão e sistemas sob medida.">
+  <title>Vero Digital | Soluções Digitais para o seu negócio!</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos Customizados e Isolados -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <!-- ========================================================= -->
+  <!-- 1. HEADER FIXO RESPONSIVO COM A LOGO OFICIAL VERO         -->
+  <!-- ========================================================= -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 w-full">
+    <div class="wrapper h-20 flex items-center justify-between">
+      
+      <!-- Logotipo Vero Digital Oficial -->
+      <a href="#inicio" class="flex items-center gap-3 text-decoration-none group">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden bg-[#F5A623] p-1 flex items-center justify-center shadow-sm border border-[#F5A623]/30 transition-transform duration-200 group-hover:scale-105">
+          <img src="IMG_4390.jpg" alt="Logo Vero Digital" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='logo.png';">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-brand font-black text-2xl tracking-tight text-[#1A182E] leading-none">VERO</span>
+          <span class="font-brand font-bold text-[10px] tracking-widest text-[#F5A623] uppercase mt-0.5">DIGITAL</span>
+        </div>
+      </a>
+
+      <!-- Links de Navegação Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
+        <a href="#inicio" class="hover:text-[#F5A623] transition-colors">Início</a>
+        <a href="#servicos" class="hover:text-[#F5A623] transition-colors">Soluções</a>
+        <a href="#demo" class="hover:text-[#F5A623] transition-colors flex items-center gap-1.5">
+          <span>Demonstração</span>
+          <span class="bg-[#F5A623]/20 text-[#1A182E] text-[10px] font-bold px-2 py-0.5 rounded-full">Ao Vivo</span>
+        </a>
+        <a href="#vantagens" class="hover:text-[#F5A623] transition-colors">Vantagens</a>
+        <a href="#contato" class="hover:text-[#F5A623] transition-colors">Contato</a>
+      </nav>
+
+      <!-- CTA de Ação no Header -->
+      <div class="hidden md:block">
+        <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Acessei%20o%20site%20institucional%20e%20gostaria%20de%20solicitar%20uma%20proposta%20para%20o%20meu%20neg%C3%B3cio." 
+           target="_blank" rel="noopener noreferrer" 
+           class="btn-primary text-xs py-2.5 px-4 shadow-none">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Fale Conosco</span>
+        </a>
+      </div>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button id="mobileToggle" class="md:hidden text-[#1A182E] text-2xl p-2 focus:outline-none" aria-label="Abrir Menu">
+        <i id="toggleIcon" class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 px-5 py-6">
+      <div class="flex flex-col gap-4 text-base font-semibold text-[#1A182E]">
+        <a href="#inicio" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Início</a>
+        <a href="#servicos" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Soluções Digitais</a>
+        <a href="#demo" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623] flex items-center justify-between">
+          <span>Demonstração Interativa</span>
+          <span class="bg-[#F5A623]/20 text-[#1A182E] text-xs px-2.5 py-0.5 rounded-full">Testar</span>
+        </a>
+        <a href="#vantagens" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Por Que a Vero?</a>
+        <a href="#contato" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Contato & Orçamento</a>
+        <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Gostaria%20de%20atendimento%20para%20modernizar%20meu%20neg%C3%B3cio." 
+           target="_blank" rel="noopener noreferrer" 
+           class="btn-primary w-full mt-2 text-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Falar no WhatsApp (87) 99938-3956</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 2. HERO SECTION COM IDENTIDADE VISUAL E PROPOSTA DE VALOR -->
+  <!-- ========================================================= -->
+  <!-- Exemplo em uma seção inteira -->
+<section id="inicio" class="py-20 bg-gray-50 reveal-on-scroll">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Conteúdo Textual -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5A623]/15 border border-[#F5A623]/30 text-[#1A182E] text-xs font-bold tracking-wide uppercase mb-6 pulse-badge">
+            <span class="w-2 h-2 rounded-full bg-[#F5A623]"></span>
+            Soluções Digitais para Negócios Locais
+          </div>
+
+          <h1 class="font-brand font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#1A182E] leading-tight tracking-tight">
+            Seu negócio com presença digital que <span class="text-[#F5A623] underline decoration-[#1A182E] decoration-4 underline-offset-4">vende</span> e organiza sua operação.
+          </h1>
+
+          <p class="mt-5 text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Cardápios interativos sem cobrança de taxas por pedido, páginas rápidas que passam credibilidade imediata e ferramentas pensadas para a sua rotina comercial.
+          </p>
+
+          <!-- Ações Principais do Hero -->
+          <div class="mt-8 flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start">
+            <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20gratuito%20para%20minha%20empresa." 
+               target="_blank" rel="noopener noreferrer" 
+               class="btn-primary">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Falar com Especialista</span>
+            </a>
+            
+            <a href="#demo" class="btn-secondary">
+              <i class="fa-solid fa-play text-xs text-[#F5A623]"></i>
+              <span>Ver Demonstração ao Vivo</span>
+            </a>
+          </div>
+
+          <!-- Destaques Numéricos -->
+          <div class="mt-10 pt-6 border-t border-gray-100 grid grid-cols-3 gap-3 text-center lg:text-left">
+            <div>
+              <p class="font-brand font-extrabold text-2xl sm:text-3xl text-[#1A182E]">0%</p>
+              <p class="text-xs text-[#4B5563] mt-0.5">Taxas por pedido</p>
+            </div>
+            <div>
+              <p class="font-brand font-extrabold text-2xl sm:text-3xl text-[#1A182E]">100%</p>
+              <p class="text-xs text-[#4B5563] mt-0.5">Adaptado a celulares</p>
+            </div>
+            <div>
+              <p class="font-brand font-extrabold text-2xl sm:text-3xl text-[#1A182E]">Direto</p>
+              <p class="text-xs text-[#4B5563] mt-0.5">No seu WhatsApp</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Card Visual de Demonstração / Mockup -->
+        <div class="lg:col-span-5 w-full">
+          <div class="bg-[#1A182E] text-white rounded-3xl p-5 sm:p-6 shadow-2xl border border-[#23203D] w-full max-w-md mx-auto">
+            
+            <!-- Barra Superior de Navegador -->
+            <div class="flex items-center justify-between pb-3.5 border-b border-gray-800 text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              </div>
+              <div class="bg-gray-900/90 text-gray-400 px-3 py-1 rounded-full text-[11px] font-mono flex items-center gap-1 border border-gray-800">
+                <i class="fa-solid fa-lock text-[9px] text-[#F5A623]"></i> cardapio.verodigital.com
+              </div>
+            </div>
+
+            <!-- Mini Painel Informativo -->
+            <div class="mt-4 bg-[#121021] p-3.5 rounded-2xl border border-gray-800">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Painel do Lojista</span>
+                <span class="text-[11px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Loja Conectada
+                </span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-2">
+                <div class="bg-gray-800/60 p-2.5 rounded-xl">
+                  <span class="text-[10px] text-gray-400 block">Pedidos do Dia</span>
+                  <span class="font-brand font-bold text-lg text-white">37</span>
+                </div>
+                <div class="bg-gray-800/60 p-2.5 rounded-xl">
+                  <span class="text-[10px] text-gray-400 block">Vendas Diretas</span>
+                  <span class="font-brand font-bold text-lg text-[#F5A623]">R$ 1.840</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exemplo de Item do Cardápio -->
+            <div class="mt-4 bg-white text-[#1A182E] p-3.5 rounded-2xl flex items-center justify-between shadow-md">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#F5A623]/20 flex items-center justify-center text-lg">🍔</div>
+                <div>
+                  <h4 class="font-brand font-bold text-xs sm:text-sm text-[#1A182E]">Combo Especial Vero</h4>
+                  <p class="text-[11px] text-gray-500">Burger 160g + Fritas + Refri</p>
+                </div>
+              </div>
+              <span class="font-brand font-bold text-xs sm:text-sm bg-gray-100 px-2 py-1 rounded-lg">R$ 38,90</span>
+            </div>
+
+            <!-- Notificação de WhatsApp Formatada -->
+            <div class="mt-3 bg-emerald-950/60 border border-emerald-500/30 p-3 rounded-xl flex items-center gap-2.5 text-xs text-emerald-300">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+              <span class="leading-tight">Pedido formatado e enviado direto para o WhatsApp do comércio.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 3. SEÇÃO DE SOLUÇÕES / SERVIÇOS                           -->
+  <!-- ========================================================= -->
+  <!-- Exemplo em uma seção inteira -->
+<section id="servicos" class="py-20 bg-gray-50 reveal-on-scroll">
+    <div class="wrapper">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-[#F5A623] font-brand font-bold text-xs uppercase tracking-wider">O que a Vero constrói</span>
+        <h2 class="font-brand font-extrabold text-2xl sm:text-4xl text-[#1A182E] mt-1.5 tracking-tight">
+          Soluções práticas para alavancar seu negócio
+        </h2>
+        <p class="mt-3 text-[#4B5563] text-sm sm:text-base">
+          Ferramentas digitais desenhadas sob medida para aumentar vendas e simplificar o dia a dia da sua empresa.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Serviço 1: Cardápios Digitais -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-[#F5A623]/20 text-[#1A182E] flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <h3 class="font-brand font-bold text-lg text-[#1A182E] mb-2">Cardápios & Catálogos Digitais</h3>
+          <p class="text-[#4B5563] text-xs sm:text-sm leading-relaxed mb-5">
+            Receba pedidos estruturados diretamente no seu WhatsApp. Economize tempo de atendimento e livre-se de altas porcentagens cobradas por apps terceiros.
+          </p>
+          <ul class="space-y-2 text-xs font-semibold text-gray-700">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Link rápido para Bio do Instagram e QR Code</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Painel fácil para mudar fotos e valores</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Sem cobrança por quantidade de pedidos</li>
+          </ul>
+        </div>
+
+        <!-- Serviço 2: Sites Institucionais & Landing Pages -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-[#F5A623]/20 text-[#1A182E] flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="font-brand font-bold text-lg text-[#1A182E] mb-2">Sites Institucionais de Conversão</h3>
+          <p class="text-[#4B5563] text-xs sm:text-sm leading-relaxed mb-5">
+            Páginas com design profissional que transmitem seriedade imediata ao cliente, posicionam seu nome nas buscas do Google e transformam cliques em mensagens.
+          </p>
+          <ul class="space-y-2 text-xs font-semibold text-gray-700">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Carregamento leve e ágil em redes móveis 4G/5G</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Otimização estrutural para pesquisas locais</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Botões de conversão e rastreio de contatos</li>
+          </ul>
+        </div>
+
+        <!-- Serviço 3: Sistemas Sob Demanda -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-xl bg-[#F5A623]/20 text-[#1A182E] flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-cubes-stacked"></i>
+          </div>
+          <h3 class="font-brand font-bold text-lg text-[#1A182E] mb-2">Painéis & Sistemas Sob Medida</h3>
+          <p class="text-[#4B5563] text-xs sm:text-sm leading-relaxed mb-5">
+            Automatize o controle de clientes, pedidos de balcão e pequenas rotinas do seu comércio com painéis web intuitivos desenvolvidos para as suas necessidades reais.
+          </p>
+          <ul class="space-y-2 text-xs font-semibold text-gray-700">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Acesso direto pelo navegador ou celular</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Relatórios descomplicados de vendas</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#F5A623]"></i> Desenvolvimento sem funções inúteis ou peso</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. DEMONSTRAÇÃO INTERATIVA DO CARDÁPIO DIGITAL            -->
+  <!-- ========================================================= -->
+  <!-- Exemplo em uma seção inteira -->
+<section id="demo" class="py-20 bg-gray-50 reveal-on-scroll">
+    <div class="wrapper">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-block bg-[#F5A623] text-[#1A182E] font-brand font-bold text-xs uppercase px-3 py-1 rounded-full mb-2">
+          Demonstração Prática
+        </span>
+        <h2 class="font-brand font-extrabold text-2xl sm:text-4xl text-[#1A182E] tracking-tight">
+          Experimente a interface de pedido agora
+        </h2>
+        <p class="mt-2 text-[#4B5563] text-sm sm:text-base">
+          Filtre as categorias, selecione opções e observe como o cálculo e o envio são instantâneos.
+        </p>
+      </div>
+
+      <!-- Container do Simulador -->
+      <div class="max-w-4xl mx-auto bg-[#F8F9FB] rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
+        
+        <!-- Topo da Aplicação Simulada com a Logo -->
+        <div class="bg-[#1A182E] text-white p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl overflow-hidden bg-[#F5A623] p-1 flex items-center justify-center flex-shrink-0">
+              <img src="IMG_4390.jpg" alt="Vero Digital Logo" class="w-full h-full object-cover rounded-lg" onerror="this.onerror=null; this.src='logo.png';">
+            </div>
+            <div>
+              <p class="font-brand font-bold text-sm leading-tight">Vero Burger & Lanches</p>
+              <p class="text-[11px] text-gray-300">Simulador de Pedido em Tempo Real</p>
+            </div>
+          </div>
+          <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-medium">
+            ● Demonstração Interativa
+          </span>
+        </div>
+
+        <div class="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Lado do Cardápio / Itens -->
+          <div class="md:col-span-7">
+            <!-- Abas de Categoria -->
+            <div class="flex gap-2 pb-3 overflow-x-auto" id="filterButtons">
+              <button class="category-chip active" onclick="switchCategory('lanches')">🍔 Lanches</button>
+              <button class="category-chip" onclick="switchCategory('bebidas')">🥤 Bebidas</button>
+              <button class="category-chip" onclick="switchCategory('doces')">🍨 Sobremesas</button>
+            </div>
+
+            <!-- Listagem Dinâmica -->
+            <div id="demoItemList" class="space-y-2.5 mt-2">
+              <!-- Renderizado via script.js -->
+            </div>
+          </div>
+
+          <!-- Lado da Sacola / Resumo do Pedido -->
+          <div class="md:col-span-5 bg-white p-4 rounded-xl border border-gray-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-gray-100 pb-2.5 mb-3">
+                <h3 class="font-brand font-bold text-[#1A182E] text-sm flex items-center gap-2">
+                  <i class="fa-solid fa-bag-shopping text-[#F5A623]"></i>
+                  <span>Seu Pedido</span>
+                </h3>
+                <span id="cartCount" class="text-xs font-bold text-[#1A182E] bg-[#F5A623]/20 px-2 py-0.5 rounded-full">0 itens</span>
+              </div>
+
+              <!-- Itens Adicionados -->
+              <div id="cartContent" class="space-y-2 max-h-52 overflow-y-auto pr-1 text-xs text-gray-600">
+                <p class="text-center text-gray-400 py-6 italic">Clique em "+ Adicionar" nos itens para montar seu pedido de teste.</p>
+              </div>
+            </div>
+
+            <!-- Totais e Envio -->
+            <div class="pt-3 border-t border-gray-100 mt-4">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs text-gray-500">Subtotal Estimado</span>
+                <span id="cartTotalValue" class="font-brand font-bold text-base text-[#1A182E]">R$ 0,00</span>
+              </div>
+
+              <button onclick="submitDemoToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-brand font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Enviar Teste no WhatsApp</span>
+              </button>
+              <p class="text-[10px] text-center text-gray-400 mt-2">Envia os itens formatados para o WhatsApp da Vero Digital: (87) 99938-3956</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Faixa de Contato da Demonstração -->
+        <div class="bg-gray-100/70 border-t border-gray-200 px-5 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#4B5563]">
+          <span>Gostou da velocidade e quer uma solução assim para seu negócio?</span>
+          <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Gostei%20do%20card%C3%A1pio%20interativo%20e%20quero%20um%20or%C3%A7amento%20para%20minha%20empresa." 
+             target="_blank" rel="noopener noreferrer" 
+             class="font-brand font-bold text-[#1A182E] hover:text-[#F5A623] flex items-center gap-1">
+            <span>Pedir Orçamento</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 5. VANTAGENS E DIFERENCIAIS DA VERO                       -->
+  <!-- ========================================================= -->
+<section id="vantagens" class="py-20 bg-gray-50 reveal-on-scroll">
+    <div class="wrapper">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-5 text-center lg:text-left">
+          <span class="text-[#F5A623] font-brand font-bold text-xs uppercase tracking-wider">Vantagens Reais</span>
+          <h2 class="font-brand font-extrabold text-2xl sm:text-4xl text-[#1A182E] mt-2 tracking-tight">
+            Por que confiar seu projeto à Vero Digital?
+          </h2>
+          <p class="mt-4 text-[#4B5563] text-sm sm:text-base leading-relaxed">
+            Eliminamos os problemas clássicos de comunicação e prazos incertos. Aqui você lida com quem realmente cria e sustenta a tecnologia do seu estabelecimento.
+          </p>
+
+          <div class="mt-6 flex justify-center lg:justify-start">
+            <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Quero%20entender%20mais%20sobre%20os%20prazos%20e%20valores%20dos%20servi%C3%A7os." 
+               target="_blank" rel="noopener noreferrer" 
+               class="btn-primary text-xs sm:text-sm">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Falar Diretamente com a Vero</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          
+          <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-[#F5A623]/20 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-user-check text-[#1A182E]"></i>
+            </div>
+            <h4 class="font-brand font-bold text-base text-[#1A182E] mb-1">Contato Pessoal & Direto</h4>
+            <p class="text-xs sm:text-sm text-[#4B5563]">Atendimento ágil pelo WhatsApp (87) 99938-3956 sem intermediários ou formulários burocráticos.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-[#F5A623]/20 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-gauge-high text-[#1A182E]"></i>
+            </div>
+            <h4 class="font-brand font-bold text-base text-[#1A182E] mb-1">Ultra Otimizado para Mobile</h4>
+            <p class="text-xs sm:text-sm text-[#4B5563]">Interfaces fluidas sem lentidão, desenhadas especificamente para clientes navegando pelo smartphone.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-[#F5A623]/20 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-coins text-[#1A182E]"></i>
+            </div>
+            <h4 class="font-brand font-bold text-base text-[#1A182E] mb-1">Sem Mensalidades Surpresa</h4>
+            <p class="text-xs sm:text-sm text-[#4B5563]">Clareza absoluta nos custos e orçamentos do seu projeto para manter o foco na lucratividade da sua empresa.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-[#F5A623]/20 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-rocket text-[#1A182E]"></i>
+            </div>
+            <h4 class="font-brand font-bold text-base text-[#1A182E] mb-1">Entrega Rápida e Pronta</h4>
+            <p class="text-xs sm:text-sm text-[#4B5563]">Processo produtivo dinâmico para colocar seu site ou catálogo ativo no menor tempo possível.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 6. SEÇÃO CTA FINAL                                        -->
+  <!-- ========================================================= -->
+  <section id="contato" class="py-16 md:py-24 bg-[#1A182E] text-white w-full relative">
+    <div class="wrapper text-center">
+      
+      <div class="w-14 h-14 rounded-2xl overflow-hidden bg-[#F5A623] p-1 flex items-center justify-center mx-auto mb-5 shadow-lg">
+        <img src="IMG_4390.jpg" alt="Logo Vero Digital" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='logo.png';">
+      </div>
+
+      <h2 class="font-brand font-extrabold text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight max-w-3xl mx-auto">
+        Pronto para profissionalizar a presença digital da sua empresa?
+      </h2>
+
+      <p class="mt-4 text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
+        Converse diretamente com a Vero Digital pelo WhatsApp e descubra a solução ideal para o momento do seu negócio.
+      </p>
+
+      <div class="mt-8">
+        <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Gostaria%20de%20um%20or%C3%A7amento%20sem%20compromisso%20para%20o%20meu%20neg%C3%B3cio." 
+           target="_blank" rel="noopener noreferrer" 
+           class="btn-primary text-sm sm:text-base py-3.5 px-8">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          <span>Falar no WhatsApp (87) 99938-3956</span>
+        </a>
+      </div>
+
+      <p class="text-xs text-gray-400 mt-4">
+        Atendimento ágil • Orçamento 100% sem compromisso
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 7. FOOTER INSTITUCIONAL                                   -->
+  <!-- ========================================================= -->
+  <footer class="bg-[#121021] text-gray-400 text-xs py-12 border-t border-gray-800/80 w-full">
+    <div class="wrapper">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800/80">
+        
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl overflow-hidden bg-[#F5A623] p-0.5 flex items-center justify-center flex-shrink-0">
+              <img src="IMG_4390.jpg" alt="Logo Vero Digital" class="w-full h-full object-cover rounded-lg" onerror="this.onerror=null; this.src='logo.png';">
+            </div>
+            <span class="font-brand font-extrabold text-lg text-white">VERO DIGITAL</span>
+          </div>
+          <p class="text-xs text-gray-400 max-w-md leading-relaxed">
+            Soluções digitais inteligentes: cardápios interativos, sites institucionais e sistemas sob demanda para comércios locais e prestadores de serviços.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-brand font-bold text-white uppercase tracking-wider mb-3">Links do Site</h4>
+          <ul class="space-y-2">
+            <li><a href="#inicio" class="hover:text-[#F5A623] transition-colors">Início</a></li>
+            <li><a href="#servicos" class="hover:text-[#F5A623] transition-colors">Nossas Soluções</a></li>
+            <li><a href="#demo" class="hover:text-[#F5A623] transition-colors">Demonstração ao Vivo</a></li>
+            <li><a href="#vantagens" class="hover:text-[#F5A623] transition-colors">Vantagens</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-brand font-bold text-white uppercase tracking-wider mb-3">Canal de Contato</h4>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-[#F5A623]"></i>
+              <a href="https://wa.me/5587999383956" target="_blank" rel="noopener noreferrer" class="hover:text-[#F5A623]">(87) 99938-3956</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-regular fa-clock text-[#F5A623]"></i>
+              <span>Segunda a Sexta: 08h às 18h</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-[#F5A623]"></i>
+              <span>Atendimento em todo o Brasil</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-gray-500">
+        <p>&copy; <span id="yearSpan"></span> Vero Digital. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em alta performance e experiência mobile.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- 8. BOTÃO FLUTUANTE DE WHATSAPP FIXO                       -->
+  <!-- ========================================================= -->
+  <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Acessei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista." 
+     target="_blank" rel="noopener noreferrer" 
+     class="wa-float" 
+     aria-label="Atendimento no WhatsApp Vero Digital">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-float-indicator"></span>
+  </a>
+
+  <!-- Script da Aplicação -->
+  <script src="script.js"></script>
+</body>
+</html>
