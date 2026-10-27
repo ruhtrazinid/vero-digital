@@ -27,9 +27,7 @@
 
   <!-- SLIDER HORIZONTAL DE CATEGORIAS -->
   <nav class="categories-slider-container">
-    <div class="chips-wrapper" id="categoryChips">
-      <!-- Chips gerados dinamicamente via JS -->
-    </div>
+    <div class="chips-wrapper" id="categoryChips"></div>
   </nav>
 
   <!-- LISTA DE PRODUTOS -->
@@ -64,9 +62,7 @@
       </div>
 
       <!-- LISTA DE ITENS NA SACOLA -->
-      <div id="modalItemsList" style="max-height: 220px; overflow-y: auto;">
-        <!-- Renderizado dinamicamente -->
-      </div>
+      <div id="modalItemsList" style="max-height: 220px; overflow-y: auto;"></div>
 
       <!-- RESUMO FINANCEIRO -->
       <div class="order-summary-box">
@@ -84,8 +80,24 @@
         </div>
       </div>
 
-      <!-- DADOS DE ENTREGA -->
+      <!-- DADOS DE ENTREGA / RETIRADA -->
       <form id="orderForm" style="display: flex; flex-direction: column; gap: 0.85rem;">
+        
+        <!-- SELEÇÃO: ENTREGA OU RETIRADA -->
+        <div class="input-block">
+          <label>Como deseja receber o pedido? *</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.25rem;">
+            <button type="button" id="btnTypeDelivery" style="padding: 0.65rem; border-radius: 8px; border: 1px solid var(--border-active); background: var(--primary-light); color: #fbbf24; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+              <i data-lucide="bike" style="width: 16px; height: 16px;"></i>
+              <span>Entrega</span>
+            </button>
+            <button type="button" id="btnTypePickup" style="padding: 0.65rem; border-radius: 8px; border: 1px solid var(--border-color); background: #090e1a; color: var(--text-muted); font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+              <i data-lucide="store" style="width: 16px; height: 16px;"></i>
+              <span>Retirada</span>
+            </button>
+          </div>
+        </div>
+
         <div class="input-block">
           <label>Seu Nome *</label>
           <input type="text" id="custName" class="input-modern" placeholder="Ex: João da Silva" required>
@@ -96,15 +108,16 @@
           <input type="tel" id="custPhone" class="input-modern" placeholder="87999999999" required>
         </div>
 
-        <div class="input-block">
+        <!-- CAMPO DE ENDEREÇO (SOME SE FOR RETIRADA) -->
+        <div class="input-block" id="boxAddress">
           <label>Endereço de Entrega Completo *</label>
-          <input type="text" id="custAddress" class="input-modern" placeholder="Rua, número, bairro e ponto de referência" required>
+          <input type="text" id="custAddress" class="input-modern" placeholder="Rua, número, bairro e referência" required>
         </div>
 
         <div class="input-block">
           <label>Forma de Pagamento *</label>
           <select id="custPayment" class="input-modern" required>
-            <option value="PIX">PIX (Chave na entrega)</option>
+            <option value="PIX">PIX</option>
             <option value="Cartão de Crédito/Débito">Cartão de Crédito / Débito (Máquina)</option>
             <option value="Dinheiro">Dinheiro</option>
           </select>
