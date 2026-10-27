@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     changeBox.style.display = e.target.value === "Dinheiro" ? "flex" : "none";
   });
 
-  // Envio do Pedido Estruturado estilo iFood para o WhatsApp
+  // Envio do Pedido no padrão exato solicitado
   const orderForm = document.getElementById("orderForm");
   orderForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -118,61 +118,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     const phone = document.getElementById("custPhone").value.trim();
     const address = orderType === "delivery" ? document.getElementById("custAddress").value.trim() : "Retirada no Balcão";
     const payment = document.getElementById("custPayment").value;
-    const change = document.getElementById("custChange")?.value.trim() || "";
+    const rawChange = document.getElementById("custChange")?.value.trim() || "";
 
     const subtotal = cart.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
     const deliveryTax = (orderType === "delivery") ? parseFloat(currentStore.taxa_entrega || 0) : 0;
     const totalGeral = subtotal + deliveryTax;
 
-    // Gerador de protocolo simples e horário
+    // Gerador de protocolo e horário
     const orderNumber = Math.floor(1000 + Math.random() * 9000);
     const now = new Date();
     const orderTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-    let msg = `🛒 *PEDIDO #${orderNumber}* • *${currentStore.nome.toUpperCase()}*\n`;
-    msg += `🕒 _Realizado às ${orderTime}_\n`;
-    msg += `─────────────────────────\n\n`;
+    const formatMoeda = (val) => val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    msg += `👤 *DADOS DO CLIENTE*\n`;
-    msg += `• *Nome:* ${name}\n`;
-    msg += `• *WhatsApp:* ${phone}\n\n`;
+    let msg = `🛍️ *NOVO PEDIDO #${orderNumber}*\n`;
+    msg += `*${currentStore.nome.toUpperCase()}* · ${orderTime}\n\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-    msg += `📦 *FORMA DE RECEBIMENTO*\n`;
+    msg += `👤 *CLIENTE*\n`;
+    msg += `${name}\n`;
+    if (phone) {
+      msg += `📱 ${phone}\n`;
+    }
+    msg += `\n`;
+
     if (orderType === "delivery") {
-      msg += `🛵 *Tipo:* Entrega (Delivery)\n`;
-      msg += `📍 *Endereço:* ${address}\n\n`;
+      msg += `🛵 *ENTREGA*\n`;
+      msg += `${address}\n\n`;
     } else {
-      msg += `🏪 *Tipo:* Retirada no Balcão\n`;
+      msg += `🏪 *RETIRADA NO BALCÃO*\n`;
       if (currentStore.endereco) {
-        msg += `📍 *Retirar em:* ${currentStore.endereco}\n\n`;
+        msg += `📍 Local: ${currentStore.endereco}\n\n`;
       } else {
-        msg += `📍 *Local:* No estabelecimento\n\n`;
+        msg += `📍 Retirar no estabelecimento\n\n`;
       }
     }
 
-    msg += `💳 *PAGAMENTO*\n`;
-    msg += `• *Método:* ${payment}\n`;
-    if (payment === "Dinheiro" && change) {
-      msg += `• *Troco para:* ${change}\n`;
-    }
-    msg += `\n─────────────────────────\n`;
-    msg += `📋 *RESUMO DOS ITENS*\n\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+    msg += `🛒 *ITENS DO PEDIDO*\n\n`;
 
     cart.forEach(item => {
-      const itemSubtotal = (item.preco * item.qtd).toFixed(2);
-      msg += `▫️ *${item.qtd}x* ${item.nome}\n`;
-      msg += `   └─ R$ ${parseFloat(item.preco).toFixed(2)} un  ➔  *R$ ${itemSubtotal}*\n`;
+      const itemTotal = (item.preco * item.qtd);
+      msg += `*${item.qtd}x* ${item.nome}\n`;
+      msg += `R$ ${formatMoeda(item.preco)} cada · *R$ ${formatMoeda(itemTotal)}*\n\n`;
     });
 
-    msg += `─────────────────────────\n`;
-    msg += `Subtotal: R$ ${subtotal.toFixed(2)}\n`;
-    msg += `Taxa de Entrega: ${orderType === "delivery" ? `R$ ${deliveryTax.toFixed(2)}` : "Grátis (Retirada)"}\n`;
-    msg += `💰 *TOTAL DO PEDIDO: R$ ${totalGeral.toFixed(2)}*\n`;
-    msg += `─────────────────────────\n\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+    msg += `Subtotal: R$ ${formatMoeda(subtotal)}\n`;
+    msg += `Taxa de entrega: ${orderType === "delivery" ? `R$ ${formatMoeda(deliveryTax)}` : "Grátis (Retirada)"}\n\n`;
+    msg += `💰 *TOTAL: R$ ${formatMoeda(totalGeral)}*\n\n`;
 
-    msg += `✨ *Agradecemos a sua preferência!*\n`;
-    msg += `_Por favor, confirme se recebeu este pedido para iniciarmos o preparo._\n\n`;
-    msg += `⚡ _Pedido gerado via Vero Digital_`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+    msg += `💳 *PAGAMENTO*\n`;
+    msg += `${payment}\n`;
+
+    if (payment === "Dinheiro" && rawChange) {
+      const numChange = parseFloat(rawChange.replace(/[^\d.,]/g, '').replace(',', '.'));
+      if (!isNaN(numChange) && numChange > totalGeral) {
+        const trocoCalculado = numChange - totalGeral;
+        msg += `Valor informado: R$ ${formatMoeda(numChange)}\n`;
+        msg += `Troco: *R$ ${formatMoeda(trocoCalculado)}*\n`;
+      } else {
+        msg += `Troco para: ${rawChange}\n`;
+      }
+    }
+
+    msg += `\n━━━━━━━━━━━━━━━━━━━━\n\n`;
+    msg += `📩 *CONFIRMAÇÃO DO PEDIDO*\n`;
+    msg += `Confirme o recebimento desta mensagem para dar andamento ao pedido.\n\n`;
+    msg += `_Vero Digital · Pedidos online_`;
 
     const cleanStorePhone = currentStore.whatsapp.replace(/\D/g, "");
     const encodedMsg = encodeURIComponent(msg);
