@@ -1,0 +1,17 @@
+﻿{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/p/:loja",
+      "destination": "/cardapio.html?loja=:loja"
+    },
+    {
+      "source": "/painel",
+      "destination": "/admin.html"
+    },
+    {
+      "source": "/entrar",
+      "destination": "/login.html"
+    }
+  ]
+}

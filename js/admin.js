@@ -238,10 +238,11 @@ async function showAdminDashboard() {
   if (window.lucide) lucide.createIcons();
 }
 
-// Configuração do Link de Compartilhamento e QR Code
 function setupQrCodeAndShare(slug) {
   const currentOrigin = window.location.origin;
-  const publicUrl = `${currentOrigin}/cardapio.html?loja=${slug}`;
+  
+  // Link encurtado e profissional
+  const publicUrl = `${currentOrigin}/p/${slug}`;
 
   const inputUrl = document.getElementById("storePublicUrlInput");
   inputUrl.value = publicUrl;

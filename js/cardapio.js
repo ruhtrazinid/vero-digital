@@ -18,9 +18,20 @@ const categoryIconMap = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Pega o slug da URL: cardapio.html?loja=nome-da-loja
+  // Lê pelo parâmetro ?loja=... ou pelo final da URL /p/nome-da-loja
   const urlParams = new URLSearchParams(window.location.search);
-  const storeSlug = urlParams.get("loja") || "conveniencia-central";
+  let storeSlug = urlParams.get("loja");
+
+  if (!storeSlug) {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts.length >= 2 && pathParts[0] === "p") {
+      storeSlug = pathParts[1];
+    }
+  }
+
+  if (!storeSlug) {
+    storeSlug = "conveniencia-central";
+  }
 
   await loadStoreData(storeSlug);
   if (currentStore) {
