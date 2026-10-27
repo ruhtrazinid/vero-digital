@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Painel do Comerciante | Vero Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="admin-body">
+  
+  <!-- CABEÇALHO RESPONSIVO -->
+  <header class="admin-header">
+    <div class="brand-wrapper">
+      <div class="brand-badge">VERO</div>
+      <div class="brand-text">Gestão <span id="headerStoreName">/ Painel</span></div>
+    </div>
+    <div style="display: flex; gap: 0.4rem; align-items: center;">
+      <a href="#" id="btnOpenLiveCardapio" target="_blank" class="btn-live-view">
+        <i data-lucide="external-link" style="width: 15px; height: 15px;"></i>
+        <span>Cardápio</span>
+      </a>
+      <button type="button" id="btnSignOut" class="btn-logout" title="Sair da Conta">
+        <i data-lucide="log-out" style="width: 15px; height: 15px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- TELA DE ONBOARDING INICIAL -->
+  <div id="onboardingScreen" style="display: none; max-width: 540px; margin: 2rem auto; padding: 1.5rem 1rem;">
+    <div class="admin-panel" style="border-color: var(--border-active);">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="share-badge">Seja Bem-vindo!</span>
+        <h2 style="font-size: 1.35rem; color: #ffffff; margin-top: 0.35rem;">Crie seu Estabelecimento</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Preencha os dados básicos para gerar o seu link exclusivo.</p>
+      </div>
+
+      <form id="onboardingForm" class="form-grid-modern" style="grid-template-columns: 1fr;">
+        <div class="input-block">
+          <label>Nome do Estabelecimento *</label>
+          <input type="text" id="obName" class="input-modern" placeholder="Ex: Conveniência do Zé, Pizzaria Bella..." required>
+        </div>
+        <div class="input-block">
+          <label>Link Exclusivo (Slug / URL) *</label>
+          <input type="text" id="obSlug" class="input-modern" placeholder="ex: conveniencia-do-ze" required>
+        </div>
+        <div class="input-block">
+          <label>Segmento</label>
+          <input type="text" id="obSegment" class="input-modern" placeholder="Ex: Hamburgueria, Conveniência...">
+        </div>
+        <div class="input-block">
+          <label>WhatsApp para Pedidos (com DDD) *</label>
+          <input type="tel" id="obPhone" class="input-modern" placeholder="87999999999" required>
+        </div>
+        <div class="input-block">
+          <label>Taxa de Entrega Padrão (R$)</label>
+          <input type="number" step="0.50" id="obTax" class="input-modern" value="5.00">
+        </div>
+        <button type="submit" id="btnCreateStoreSubmit" class="btn-primary-pro" style="margin-top: 0.5rem; width: 100%;">
+          <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+          Criar Meu Cardápio Agora
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL DO PAINEL -->
+  <main class="admin-container" id="adminMainContent" style="display: none;">
+    
+    <!-- CARD DE DIVULGAÇÃO & QR CODE -->
+    <section class="share-card-container">
+      <div class="share-card-info">
+        <span class="share-badge">Link & QR Code Oficial</span>
+        <h3 style="font-size: 1.15rem; color: #ffffff; font-weight: 800; margin-bottom: 0.25rem;">Divulgue seu Cardápio</h3>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Copie o link para a Bio do Instagram ou baixe o QR Code para imprimir no balcão.</p>
+        
+        <div class="share-input-wrapper">
+          <input type="text" id="storePublicUrlInput" class="share-input-readonly" readonly value="Carregando link...">
+          <button type="button" id="btnCopyLink" class="btn-action-copy">
+            <i data-lucide="copy" style="width: 15px; height: 15px;"></i>
+            <span id="copyBtnText">Copiar Link</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="share-card-qr">
+        <div id="qrcodeBox" class="qrcode-wrapper"></div>
+        <button type="button" id="btnDownloadQr" class="btn-download-qr">
+          <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+          Baixar QR Code
+        </button>
+      </div>
+    </section>
+
+    <!-- MÉTRICAS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total de Itens</span>
+        <span class="stat-value" id="statTotalProds">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Disponíveis</span>
+        <span class="stat-value" style="color: #34d399;" id="statActiveProds">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Taxa Entrega</span>
+        <span class="stat-value" style="color: #fbbf24;" id="statTax">R$ 0,00</span>
+      </div>
+    </div>
+
+    <!-- ABAS -->
+    <div class="admin-tabs">
+      <button class="tab-link active" id="tabProductsBtn">
+        <i data-lucide="package" style="width: 16px; height: 16px;"></i>
+        Gerenciar Cardápio
+      </button>
+      <button class="tab-link" id="tabStoreBtn">
+        <i data-lucide="store" style="width: 16px; height: 16px;"></i>
+        Configurações da Loja
+      </button>
+    </div>
+
+    <!-- ABA 1: PRODUTOS -->
+    <section id="sectionProducts" class="admin-panel">
+      <div class="panel-header" id="formHeader">
+        <h2 class="panel-title" id="formTitle">Cadastrar Novo Item</h2>
+        <p class="panel-subtitle" id="formSubtitle">Insira os itens do seu catálogo com preço e categoria.</p>
+      </div>
+
+      <form id="productForm" class="form-grid-modern">
+        <input type="hidden" id="editingProdId" value="">
+
+        <div class="input-block">
+          <label>Nome do Item *</label>
+          <input type="text" id="prodName" class="input-modern" placeholder="Ex: X-Salada Especial, Heineken 330ml..." required>
+        </div>
+
+        <div class="input-block">
+          <label>Categoria & Ícone *</label>
+          <select id="prodCategorySelect" class="input-modern" required>
+            <option value="Lanches & Hambúrgueres|sandwich">🍔 Lanches & Hambúrgueres</option>
+            <option value="Pizzas|pizza">🍕 Pizzas</option>
+            <option value="Porções & Petiscos|cookie">🍟 Porções & Petiscos</option>
+            <option value="Cervejas & Chopp|beer" selected>🍺 Cervejas & Chopp</option>
+            <option value="Refrigerantes & Sucos|cup-soda">🥤 Refrigerantes & Sucos</option>
+            <option value="Destilados & Vinhos|wine">🍷 Destilados & Vinhos</option>
+            <option value="Energéticos|zap">⚡ Energéticos</option>
+            <option value="Sobremesas & Açaí|ice-cream-2">🍨 Sobremesas & Açaí</option>
+            <option value="Gelo & Carvão|snowflake">🧊 Gelo & Carvão</option>
+            <option value="Outros Produtos|package">📦 Outros Produtos</option>
+          </select>
+        </div>
+
+        <div class="input-block">
+          <label>Preço de Venda (R$) *</label>
+          <input type="number" step="0.10" id="prodPrice" class="input-modern" placeholder="12.00" required>
+        </div>
+        
+        <div class="input-block">
+          <label>Foto do Produto (Opcional)</label>
+          <input type="file" id="prodFileInput" class="input-modern" accept="image/*" style="padding: 0.5rem;">
+        </div>
+
+        <div class="input-block" style="grid-column: 1 / -1;">
+          <label>Descrição ou Ingredientes</label>
+          <input type="text" id="prodDesc" class="input-modern" placeholder="Ex: Pão brioche, carne 160g, cheddar...">
+        </div>
+
+        <!-- PRÉVIA DA FOTO -->
+        <div id="imagePreviewContainer" style="display: none; grid-column: 1 / -1; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px dashed var(--border-active);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <img id="imagePreview" src="" alt="Prévia" style="width: 44px; height: 44px; object-fit: cover; border-radius: 6px;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: #fff;" id="imagePreviewName">Foto anexada</div>
+          </div>
+          <button type="button" id="btnRemoveChosenImage" style="background: none; border: none; color: #ef4444; font-size: 0.78rem; cursor: pointer; font-weight: 700;">Remover</button>
+        </div>
+
+        <div style="grid-column: 1 / -1; margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
+          <button type="submit" id="btnAddProd" class="btn-primary-pro">
+            <i data-lucide="plus-circle" style="width: 18px; height: 18px;"></i>
+            <span id="btnSubmitText">Adicionar Item ao Cardápio</span>
+          </button>
+          <button type="button" id="btnCancelEdit" class="btn-cancel-edit" style="display: none;">
+            Cancelar Edição
+          </button>
+        </div>
+      </form>
+
+      <div class="panel-header" style="margin-top: 2rem; margin-bottom: 0.75rem;">
+        <h3 class="panel-title" style="font-size: 1.05rem;">Itens Ativos no Cardápio</h3>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Ícone</th>
+              <th>Item</th>
+              <th>Preço</th>
+              <th>Status</th>
+              <th style="text-align: right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Carregando produtos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ABA 2: DADOS DO COMÉRCIO -->
+    <section id="sectionStore" class="admin-panel" style="display: none;">
+      <div class="panel-header">
+        <h2 class="panel-title">Configurações da Loja</h2>
+        <p class="panel-subtitle">Personalize a identidade da loja, WhatsApp e taxas.</p>
+      </div>
+
+      <form id="storeForm" class="form-grid-modern">
+        <div class="input-block">
+          <label>Nome do Estabelecimento *</label>
+          <input type="text" id="storeName" class="input-modern" required>
+        </div>
+        <div class="input-block">
+          <label>Segmento</label>
+          <input type="text" id="storeSegment" class="input-modern" placeholder="Ex: Conveniência, Hamburgueria...">
+        </div>
+        <div class="input-block">
+          <label>WhatsApp para Pedidos (com DDD) *</label>
+          <input type="tel" id="storePhone" class="input-modern" placeholder="87999999999" required>
+        </div>
+        <div class="input-block">
+          <label>Taxa de Entrega (R$) *</label>
+          <input type="number" step="0.50" id="storeTax" class="input-modern" required>
+        </div>
+        <div class="input-block">
+          <label>Cor do Tema</label>
+          <input type="color" id="storeColor" class="input-modern" style="height: 48px; padding: 4px; cursor: pointer;">
+        </div>
+        <div class="input-block" style="grid-column: 1 / -1;">
+          <label>Endereço Completo</label>
+          <input type="text" id="storeAddress" class="input-modern" placeholder="Rua, número, bairro">
+        </div>
+        <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+          <button type="submit" id="btnSaveStore" class="btn-primary-pro">
+            <i data-lucide="save" style="width: 18px; height: 18px;"></i>
+            Salvar Configurações
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
