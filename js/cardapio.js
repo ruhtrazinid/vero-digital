@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     changeBox.style.display = e.target.value === "Dinheiro" ? "flex" : "none";
   });
 
-  // Envio do Pedido no padrão visual restaurado
+  // Envio do Pedido no padrão visual com Referência
   const orderForm = document.getElementById("orderForm");
   orderForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const name = document.getElementById("custName").value.trim();
     const phone = document.getElementById("custPhone").value.trim();
     const address = orderType === "delivery" ? document.getElementById("custAddress").value.trim() : "Retirada no Balcão";
+    const reference = document.getElementById("custReference")?.value.trim() || "";
     const payment = document.getElementById("custPayment").value;
     const change = document.getElementById("custChange")?.value.trim() || "";
 
@@ -139,7 +140,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     msg += `📦 *FORMA DE RECEBIMENTO*\n`;
     if (orderType === "delivery") {
       msg += `🛵 *Tipo:* Entrega (Delivery)\n`;
-      msg += `📍 *Endereço:* ${address}\n\n`;
+      msg += `📍 *Endereço:* ${address}\n`;
+      if (reference) {
+        msg += `📍 *Referência:* ${reference}\n`;
+      }
+      msg += `\n`;
     } else {
       msg += `🏪 *Tipo:* Retirada no Balcão\n`;
       if (currentStore.endereco) {

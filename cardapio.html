@@ -108,10 +108,17 @@
           <input type="tel" id="custPhone" class="input-modern" placeholder="87999999999" required>
         </div>
 
-        <!-- CAMPO DE ENDEREÇO (SOME SE FOR RETIRADA) -->
-        <div class="input-block" id="boxAddress">
-          <label>Endereço de Entrega Completo *</label>
-          <input type="text" id="custAddress" class="input-modern" placeholder="Rua, número, bairro e referência" required>
+        <!-- BLOCO DE ENDEREÇO E REFERÊNCIA (SOME SE FOR RETIRADA) -->
+        <div id="boxAddress" style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div class="input-block">
+            <label>Endereço de Entrega Completo *</label>
+            <input type="text" id="custAddress" class="input-modern" placeholder="Rua, número e bairro" required>
+          </div>
+
+          <div class="input-block">
+            <label>Ponto de Referência</label>
+            <input type="text" id="custReference" class="input-modern" placeholder="Ex: Próximo à praça, portão branco">
+          </div>
         </div>
 
         <div class="input-block">
