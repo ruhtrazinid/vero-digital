@@ -42,20 +42,23 @@
         </div>
       </a>
 
-      <!-- Links de Navegação Desktop -->
+      <!-- Links de Navegação Desktop (Sem Demonstração) -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
         <a href="#inicio" class="hover:text-[#F5A623] transition-colors">Início</a>
         <a href="#servicos" class="hover:text-[#F5A623] transition-colors">Soluções</a>
-        <a href="#demo" class="hover:text-[#F5A623] transition-colors flex items-center gap-1.5">
-          <span>Demonstração</span>
-          <span class="bg-[#F5A623]/20 text-[#1A182E] text-[10px] font-bold px-2 py-0.5 rounded-full">Ao Vivo</span>
+        <a href="#sistemas" class="hover:text-[#F5A623] transition-colors flex items-center gap-1.5">
+          <span>Sistemas</span>
+          <span class="bg-[#F5A623] text-[#1A182E] text-[10px] font-black px-2 py-0.5 rounded-full uppercase">Novo</span>
         </a>
         <a href="#vantagens" class="hover:text-[#F5A623] transition-colors">Vantagens</a>
         <a href="#contato" class="hover:text-[#F5A623] transition-colors">Contato</a>
       </nav>
 
       <!-- CTA de Ação no Header -->
-      <div class="hidden md:block">
+      <div class="hidden md:flex items-center gap-3">
+        <a href="login.html" class="text-xs font-brand font-bold text-[#1A182E] hover:text-[#F5A623] px-3 py-2 transition-colors">
+          Área do Lojista
+        </a>
         <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Acessei%20o%20site%20institucional%20e%20gostaria%20de%20solicitar%20uma%20proposta%20para%20o%20meu%20neg%C3%B3cio." 
            target="_blank" rel="noopener noreferrer" 
            class="btn-primary text-xs py-2.5 px-4 shadow-none">
@@ -71,16 +74,17 @@
 
     </div>
 
-    <!-- Dropdown Mobile -->
+    <!-- Dropdown Mobile (Sem Demonstração) -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 px-5 py-6">
       <div class="flex flex-col gap-4 text-base font-semibold text-[#1A182E]">
         <a href="#inicio" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Início</a>
         <a href="#servicos" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Soluções Digitais</a>
-        <a href="#demo" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623] flex items-center justify-between">
-          <span>Demonstração Interativa</span>
-          <span class="bg-[#F5A623]/20 text-[#1A182E] text-xs px-2.5 py-0.5 rounded-full">Testar</span>
+        <a href="#sistemas" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623] flex items-center justify-between">
+          <span>Sistemas & Micro-SaaS</span>
+          <span class="bg-[#F5A623] text-[#1A182E] text-xs px-2.5 py-0.5 rounded-full font-bold">Novo</span>
         </a>
         <a href="#vantagens" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Por Que a Vero?</a>
+        <a href="login.html" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Painel do Lojista (Login)</a>
         <a href="#contato" class="mobile-link py-2 border-b border-gray-100 hover:text-[#F5A623]">Contato & Orçamento</a>
         <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Gostaria%20de%20atendimento%20para%20modernizar%20meu%20neg%C3%B3cio." 
            target="_blank" rel="noopener noreferrer" 
@@ -125,12 +129,10 @@
           </p>
 
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="https://wa.me/5587999383956?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vero%20e%20quero%20modernizar%20o%20meu%20neg%C3%B3cio." 
-               target="_blank" 
-               rel="noopener noreferrer"
+            <a href="#sistemas" 
                class="btn-primary w-full sm:w-auto text-sm sm:text-base py-3.5 px-7">
-              <span>Falar com a Vero no WhatsApp</span>
-              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Conhecer o Vero Cardápio</span>
+              <i class="fa-solid fa-arrow-right text-sm"></i>
             </a>
 
             <a href="#demo" class="btn-secondary w-full sm:w-auto text-sm sm:text-base py-3.5 px-6">
@@ -224,7 +226,171 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 3. SEÇÃO DE SOLUÇÕES / SERVIÇOS                           -->
+  <!-- 3. SEÇÃO DE PRODUTOS & SISTEMAS (SAAS EXCLUSIVO)          -->
+  <!-- ========================================================= -->
+  <section id="sistemas" class="py-20 bg-[#0d1527] text-white relative overflow-hidden reveal-on-scroll">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#F5A623]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="wrapper relative z-10">
+      
+      <!-- Cabeçalho da Seção -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="inline-block bg-[#F5A623]/20 text-[#F5A623] border border-[#F5A623]/40 font-brand font-bold text-xs uppercase px-3.5 py-1.5 rounded-full mb-3 tracking-wide">
+          Sistemas & Plataformas Vero
+        </span>
+        <h2 class="font-brand font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
+          Micro-SaaS para Automatizar o Comércio Local
+        </h2>
+        <p class="mt-3 text-gray-400 text-sm sm:text-base leading-relaxed">
+          Chega de enviar PDFs pesados e fotos desfocadas pelo WhatsApp. Ofereça uma experiência de pedido profissional, veloz e sem intermediários.
+        </p>
+      </div>
+
+      <!-- Card Principal do Produto em Destaque -->
+      <div class="bg-gradient-to-br from-[#162238] to-[#0f172a] border border-[#F5A623]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Lado Esquerdo: Descrição e Benefícios -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-[#F5A623] text-[#1A182E] font-brand font-black text-xs px-3 py-1 rounded-md uppercase tracking-wider">
+              <i class="fa-solid fa-fire"></i> Produto em Destaque
+            </div>
+
+            <h3 class="font-brand font-black text-2xl sm:text-4xl text-white tracking-tight leading-snug">
+              Vero Cardápio Digital Interativo
+            </h3>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              O sistema desenhado sob medida para conveniências, hamburguerias, pizzarias, lanchonetes e açaís. Os clientes montam o pedido, escolhem a entrega e enviam a encomenda 100% calculada diretamente para o seu WhatsApp.
+            </p>
+
+            <!-- Lista de Diferenciais -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</div>
+                <div>
+                  <h4 class="font-brand font-bold text-sm text-white">Zero Comissões</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Sem cobrança por porcentagem das vendas. O lucro é 100% da sua empresa.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</div>
+                <div>
+                  <h4 class="font-brand font-bold text-sm text-white">QR Code Integrado</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Gere e baixe o QR Code em alta definição para mesas e balcões em 1 clique.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</div>
+                <div>
+                  <h4 class="font-brand font-bold text-sm text-white">Gestão Rápida</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Altere preços, pause itens esgotados e adicione novidades pelo celular.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</div>
+                <div>
+                  <h4 class="font-brand font-bold text-sm text-white">Isolamento Multi-lojas</h4>
+                  <p class="text-xs text-gray-400 mt-0.5">Cada estabelecimento tem o seu próprio link público e painel administrativo seguro.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botões de Ação do SaaS -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+              <a href="#checkout" 
+                 class="w-full sm:w-auto bg-[#F5A623] hover:bg-[#E69516] text-[#1A182E] font-brand font-black text-sm sm:text-base py-3.5 px-8 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Assinar Plano Mensal</span>
+              </a>
+
+              <a href="cardapio.html?loja=conveniencia-central" 
+                 target="_blank" rel="noopener noreferrer" 
+                 class="w-full sm:w-auto bg-white/10 hover:bg-white/15 border border-white/20 text-white font-brand font-bold text-sm sm:text-base py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2">
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-[#F5A623]"></i>
+                <span>Ver Demonstração ao Vivo</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Lado Direito: Prévia Visual Realista da Plataforma -->
+          <div class="lg:col-span-5">
+            <div class="bg-[#0b1120] border border-gray-800 rounded-2xl p-4 shadow-2xl">
+              
+              <!-- Barra do Navegador -->
+              <div class="flex items-center justify-between pb-3 border-b border-gray-800 text-xs text-gray-400">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                </div>
+                <span class="text-[11px] font-mono text-gray-400">cardapio.vero.app</span>
+                <i class="fa-solid fa-lock text-[10px] text-emerald-400"></i>
+              </div>
+
+              <!-- Prévia Interna do Cardápio -->
+              <div class="mt-4 space-y-3">
+                
+                <div class="bg-gradient-to-r from-amber-600 to-amber-700 p-3.5 rounded-xl text-white">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <h5 class="font-brand font-bold text-sm">O Seu Estabelecimento Aqui</h5>
+                      <p class="text-[11px] text-amber-100">Taxa de Entrega: R$ 5,00</p>
+                    </div>
+                    <span class="bg-white/20 text-[10px] font-bold px-2 py-0.5 rounded-full">Aberto</span>
+                  </div>
+                </div>
+
+                <div class="flex gap-1.5 overflow-x-auto py-1">
+                  <span class="bg-[#F5A623] text-[#1A182E] text-[10px] font-bold px-2.5 py-1 rounded-md">🍔 Lanches</span>
+                  <span class="bg-gray-800 text-gray-300 text-[10px] font-medium px-2.5 py-1 rounded-md">🍺 Cervejas</span>
+                  <span class="bg-gray-800 text-gray-300 text-[10px] font-medium px-2.5 py-1 rounded-md">🍕 Pizzas</span>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 p-2.5 rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-base">🍔</div>
+                    <div>
+                      <p class="text-xs font-bold text-white leading-tight">Burger Artesanal Vero</p>
+                      <p class="text-[10px] text-[#F5A623] font-bold">R$ 24,90</p>
+                    </div>
+                  </div>
+                  <span class="w-6 h-6 rounded-md bg-[#F5A623] text-[#1A182E] font-bold text-xs flex items-center justify-center">+</span>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 p-2.5 rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-base">🍺</div>
+                    <div>
+                      <p class="text-xs font-bold text-white leading-tight">Heineken 330ml Gelada</p>
+                      <p class="text-[10px] text-[#F5A623] font-bold">R$ 9,50</p>
+                    </div>
+                  </div>
+                  <span class="w-6 h-6 rounded-md bg-[#F5A623] text-[#1A182E] font-bold text-xs flex items-center justify-center">+</span>
+                </div>
+
+                <div class="bg-emerald-600 p-2.5 rounded-xl text-white flex items-center justify-between text-xs font-bold mt-2">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-cart-shopping"></i> 2 itens na sacola</span>
+                  <span>R$ 39,40 ➔</span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. SEÇÃO DE SOLUÇÕES / SERVIÇOS SOB MEDIDA               -->
   <!-- ========================================================= -->
   <section id="servicos" class="py-20 bg-gray-50 reveal-on-scroll">
     <div class="wrapper">
@@ -295,9 +461,9 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 4. DEMONSTRAÇÃO INTERATIVA DO CARDÁPIO DIGITAL            -->
+  <!-- 5. DEMONSTRAÇÃO INTERATIVA DO CARDÁPIO DIGITAL            -->
   <!-- ========================================================= -->
-  <section id="demo" class="py-20 bg-gray-50 reveal-on-scroll">
+  <section id="demo" class="py-20 bg-white reveal-on-scroll">
     <div class="wrapper">
       
       <div class="text-center max-w-2xl mx-auto mb-10">
@@ -400,7 +566,7 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 5. VANTAGENS E DIFERENCIAIS DA VERO                       -->
+  <!-- 6. VANTAGENS E DIFERENCIAIS DA VERO                       -->
   <!-- ========================================================= -->
   <section id="vantagens" class="py-20 bg-gray-50 reveal-on-scroll">
     <div class="wrapper">
@@ -466,7 +632,7 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 6. SEÇÃO CTA FINAL                                        -->
+  <!-- 7. SEÇÃO CTA FINAL                                        -->
   <!-- ========================================================= -->
   <section id="contato" class="py-16 md:py-24 bg-[#1A182E] text-white w-full relative">
     <div class="wrapper text-center">
@@ -500,7 +666,7 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 7. FOOTER INSTITUCIONAL                                   -->
+  <!-- 8. FOOTER INSTITUCIONAL                                   -->
   <!-- ========================================================= -->
   <footer class="bg-[#121021] text-gray-400 text-xs py-12 border-t border-gray-800/80 w-full">
     <div class="wrapper">
@@ -523,9 +689,9 @@
           <h4 class="font-brand font-bold text-white uppercase tracking-wider mb-3">Links do Site</h4>
           <ul class="space-y-2">
             <li><a href="#inicio" class="hover:text-[#F5A623] transition-colors">Início</a></li>
+            <li><a href="#sistemas" class="hover:text-[#F5A623] transition-colors">Vero Cardápio Digital</a></li>
             <li><a href="#servicos" class="hover:text-[#F5A623] transition-colors">Nossas Soluções</a></li>
-            <li><a href="#demo" class="hover:text-[#F5A623] transition-colors">Demonstração ao Vivo</a></li>
-            <li><a href="#vantagens" class="hover:text-[#F5A623] transition-colors">Vantagens</a></li>
+            <li><a href="login.html" class="hover:text-[#F5A623] transition-colors">Acesso ao Painel</a></li>
           </ul>
         </div>
 
@@ -542,7 +708,7 @@
             </li>
             <li class="flex items-center gap-2">
               <i class="fa-solid fa-location-dot text-[#F5A623]"></i>
-              <span>Atendimento em todo o Brasil</span>
+              <span>Bodocó - PE | Atendimento Brasil</span>
             </li>
           </ul>
         </div>
@@ -558,7 +724,7 @@
   </footer>
 
   <!-- ========================================================= -->
-  <!-- 8. BOTÃO FLUTUANTE DE WHATSAPP FIXO                       -->
+  <!-- 9. BOTÃO FLUTUANTE DE WHATSAPP FIXO                       -->
   <!-- ========================================================= -->
   <a href="https://wa.me/5587999383956?text=Ol%C3%A1%2C%20Vero%20Digital!%20Acessei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista." 
      target="_blank" rel="noopener noreferrer" 

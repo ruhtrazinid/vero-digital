@@ -235,3 +235,18 @@ const initScrollReveal = () => {
 
 // Dispara assim que o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', initScrollReveal);
+
+// Interceção do botão de Assinatura para redirecionamento suave ou WhatsApp direto
+document.addEventListener('DOMContentLoaded', () => {
+  const btnAssinar = document.querySelector('a[href="#checkout"]');
+  if (btnAssinar) {
+    btnAssinar.addEventListener('click', (e) => {
+      // Se não houver uma secção com id="checkout", direciona para o WhatsApp de adesão
+      if (!document.getElementById('checkout')) {
+        e.preventDefault();
+        const msg = encodeURIComponent("Olá, Vero Digital! Gostaria de assinar o plano mensal do Vero Cardápio Digital para o meu estabelecimento.");
+        window.open(`https://wa.me/5587999383956?text=${msg}`, '_blank', 'noopener,noreferrer');
+      }
+    });
+  }
+});
