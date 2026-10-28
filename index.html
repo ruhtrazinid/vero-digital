@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#19192d">
   <meta name="description" content="Conheça o Vero Cardápio Digital: uma forma simples de apresentar seus produtos e receber pedidos pelo WhatsApp.">
   <title>Vero Digital | Soluções simples para seu negócio</title>
-  <link rel="icon" type="image/jpeg" href="logo.png">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -197,63 +197,53 @@
       body::before { animation: none; }
     }
   
-    /* Marca principal: mesmo conjunto visual do cabeçalho, ampliado */
+    /* Logotipo institucional independente do favicon: wordmark legível */
     .welcome-mark.welcome-brand-lockup {
       display: flex !important;
-      flex-direction: row !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: clamp(16px, 2vw, 26px) !important;
       width: auto !important;
       min-width: 0 !important;
       max-width: 100% !important;
       padding: 0 !important;
       background: transparent !important;
-      box-shadow: none !important;
       border: 0 !important;
+      box-shadow: none !important;
       transform: none !important;
-    }
-
-    .welcome-mark.welcome-brand-lockup .welcome-logo-image {
-      display: block !important;
-      flex: 0 0 auto !important;
-      width: clamp(120px, 14vw, 178px) !important;
-      height: clamp(120px, 14vw, 178px) !important;
-      max-width: none !important;
-      object-fit: cover !important;
-      object-position: center !important;
-      border-radius: 25% !important;
-      background: #f5a623 !important;
-      box-shadow: 0 20px 42px rgba(0,0,0,.25) !important;
-      filter: none !important;
     }
 
     .welcome-mark.welcome-brand-lockup .welcome-brand-name {
       display: flex !important;
-      flex: 0 0 auto !important;
       flex-direction: column !important;
       align-items: flex-start !important;
       justify-content: center !important;
-      line-height: .95 !important;
-      gap: 9px !important;
-      letter-spacing: .06em !important;
+      gap: 10px !important;
       margin: 0 !important;
+      line-height: .9 !important;
+      text-align: left !important;
+      padding: clamp(8px, 1vw, 14px) 0;
     }
 
     .welcome-mark.welcome-brand-lockup .welcome-brand-name strong {
+      display: block !important;
       color: #f8f7fc !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: clamp(36px, 4vw, 58px) !important;
+      font-size: clamp(64px, 8vw, 112px) !important;
       font-weight: 800 !important;
-      letter-spacing: -.04em !important;
+      letter-spacing: -.065em !important;
+      line-height: .88 !important;
       margin: 0 !important;
+      text-shadow: 0 10px 35px rgba(0,0,0,.18);
     }
 
     .welcome-mark.welcome-brand-lockup .welcome-brand-name span {
+      display: block !important;
       color: #f5a623 !important;
-      font-size: clamp(12px, 1.2vw, 16px) !important;
+      font-size: clamp(17px, 1.8vw, 24px) !important;
       font-weight: 800 !important;
-      letter-spacing: .32em !important;
+      letter-spacing: .42em !important;
+      line-height: 1.2 !important;
+      padding-left: .16em;
     }
 
     .welcome-mark.welcome-brand-lockup .mark-caption {
@@ -262,30 +252,23 @@
 
     @media (max-width: 760px) {
       .welcome-mark.welcome-brand-lockup {
-        gap: 12px !important;
-      }
-      .welcome-mark.welcome-brand-lockup .welcome-logo-image {
-        width: 82px !important;
-        height: 82px !important;
+        justify-content: flex-start !important;
       }
       .welcome-mark.welcome-brand-lockup .welcome-brand-name strong {
-        font-size: 30px !important;
+        font-size: clamp(46px, 12vw, 68px) !important;
       }
       .welcome-mark.welcome-brand-lockup .welcome-brand-name span {
-        font-size: 10px !important;
+        font-size: 14px !important;
+        letter-spacing: .38em !important;
       }
     }
 
     @media (max-height: 680px) and (min-width: 761px) {
-      .welcome-mark.welcome-brand-lockup .welcome-logo-image {
-        width: clamp(82px, 12vh, 130px) !important;
-        height: clamp(82px, 12vh, 130px) !important;
-      }
       .welcome-mark.welcome-brand-lockup .welcome-brand-name strong {
-        font-size: clamp(30px, 4vh, 44px) !important;
+        font-size: clamp(54px, 10vh, 78px) !important;
       }
       .welcome-mark.welcome-brand-lockup .welcome-brand-name span {
-        font-size: 11px !important;
+        font-size: 15px !important;
       }
     }
   </style>
@@ -309,9 +292,7 @@
         <a class="button" href="produto.html">Conhecer nossas soluções <span aria-hidden="true">→</span></a>
         <span class="scroll-note">Simples, direto e feito para o seu negócio.</span>
       </div>
-      <div class="welcome-mark welcome-brand-lockup" aria-label="Vero Digital">
-        <img class="welcome-logo-image" src="IMG_4390.jpg" alt="Logo Vero Digital"
-             onerror="this.onerror=null;this.src='logo.png'">
+      <div class="welcome-mark welcome-brand-lockup" role="img" aria-label="Vero Digital">
         <div class="welcome-brand-name">
           <strong>VERO</strong>
           <span>DIGITAL</span>
