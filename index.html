@@ -196,6 +196,73 @@
     @media (prefers-reduced-motion: reduce) {
       body::before { animation: none; }
     }
+  
+    /* Logo real da Vero no lugar do símbolo genérico */
+    .welcome-brand-lockup {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 2vw, 24px);
+      min-width: 0;
+      width: 100%;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: 0 !important;
+      transform: none !important;
+    }
+
+    .welcome-logo-image {
+      display: block;
+      width: clamp(105px, 13vw, 175px);
+      height: clamp(105px, 13vw, 175px);
+      object-fit: contain;
+      border-radius: 22%;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,.22));
+    }
+
+    .welcome-brand-name {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: .95;
+      gap: 9px;
+      letter-spacing: .06em;
+    }
+
+    .welcome-brand-name strong {
+      color: #f8f7fc;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(35px, 4vw, 58px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .welcome-brand-name span {
+      color: #f5a623;
+      font-size: clamp(12px, 1.2vw, 16px);
+      font-weight: 800;
+      letter-spacing: .32em;
+    }
+
+    @media (max-width: 760px) {
+      .welcome-brand-lockup { gap: 12px; }
+      .welcome-logo-image {
+        width: 88px;
+        height: 88px;
+      }
+      .welcome-brand-name strong { font-size: 32px; }
+      .welcome-brand-name span { font-size: 10px; }
+    }
+
+    @media (max-height: 680px) and (min-width: 761px) {
+      .welcome-logo-image {
+        width: clamp(82px, 12vh, 130px);
+        height: clamp(82px, 12vh, 130px);
+      }
+      .welcome-brand-name strong { font-size: clamp(30px, 4vh, 44px); }
+      .welcome-brand-name span { font-size: 11px; }
+    }
+
   </style>
 
 </head>
@@ -217,9 +284,13 @@
         <a class="button" href="produto.html">Conhecer nossas soluções <span aria-hidden="true">→</span></a>
         <span class="scroll-note">Simples, direto e feito para o seu negócio.</span>
       </div>
-      <div class="welcome-mark" aria-hidden="true">
-        <div class="mark-square"><span>V</span><i></i></div>
-        <div class="mark-caption">VERO DIGITAL</div>
+      <div class="welcome-mark welcome-brand-lockup" aria-label="Vero Digital">
+        <img class="welcome-logo-image" src="IMG_4390.jpg" alt="Logo Vero Digital"
+             onerror="this.onerror=null;this.src='logo.png'">
+        <div class="welcome-brand-name">
+          <strong>VERO</strong>
+          <span>DIGITAL</span>
+        </div>
       </div>
     </section>
   </main>
