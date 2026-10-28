@@ -11,6 +11,193 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --vero-bg: #11101f;
+      --vero-text: #f7f6fc;
+      --vero-muted: #c5c3d2;
+      --vero-gold: #f5a623;
+    }
+
+    html, body { background: var(--vero-bg); }
+    body {
+      position: relative;
+      isolation: isolate;
+      color: var(--vero-text);
+      background: transparent !important;
+    }
+
+    /* Camadas luminosas em movimento contínuo */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -35%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 18% 35%, rgba(245,166,35,.24), transparent 28%),
+        radial-gradient(ellipse at 75% 28%, rgba(100,85,190,.22), transparent 32%),
+        radial-gradient(ellipse at 62% 78%, rgba(245,166,35,.13), transparent 30%),
+        radial-gradient(ellipse at 35% 75%, rgba(60,78,150,.18), transparent 32%);
+      background-size: 150% 150%;
+      filter: blur(24px);
+      animation: veroGradientFlow 20s ease-in-out infinite alternate;
+      will-change: transform, background-position;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(115deg, rgba(12,11,24,.36), rgba(12,11,24,.05) 48%, rgba(12,11,24,.4));
+    }
+
+    @keyframes veroGradientFlow {
+      0% { transform: translate3d(-5%, -3%, 0) rotate(-4deg) scale(1); background-position: 0% 20%; }
+      35% { transform: translate3d(3%, 2%, 0) rotate(2deg) scale(1.05); background-position: 70% 0%; }
+      70% { transform: translate3d(-2%, 5%, 0) rotate(-2deg) scale(1.08); background-position: 100% 80%; }
+      100% { transform: translate3d(5%, -2%, 0) rotate(4deg) scale(1.02); background-position: 10% 100%; }
+    }
+
+    .topbar, .simple-footer {
+      position: relative;
+      z-index: 1;
+      border-color: rgba(255,255,255,.14) !important;
+    }
+    .brand strong, .top-login, .simple-footer, .simple-footer a,
+    .back-link, .demo-link, .scroll-note { color: var(--vero-muted) !important; }
+    .brand small, .eyebrow { color: #ffc35c !important; }
+    .welcome-content p, .product-copy > p { color: #d0cede !important; }
+    .mark-caption { color: var(--vero-muted) !important; }
+    .mark-square {
+      background: rgba(26,24,46,.78) !important;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 20px 20px 0 rgba(245,166,35,.08) !important;
+    }
+    .demo-card {
+      background: #f8f8fb !important;
+      color: #19192d !important;
+      box-shadow: 0 22px 70px rgba(0,0,0,.3) !important;
+    }
+    .benefit strong { color: #f4f2fb !important; }
+    .benefit p { color: #c2bfd0 !important; }
+    .product-cta {
+      background: rgba(27,26,48,.76) !important;
+      border: 1px solid rgba(255,255,255,.12) !important;
+    }
+
+    /* Desktop: uma tela, sem rolagem, com cada área no seu espaço */
+    @media (min-width: 761px) {
+      html, body {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden !important;
+      }
+      body {
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+      .topbar { flex: 0 0 68px; }
+      main { flex: 1 1 auto; min-height: 0; }
+      .simple-footer { flex: 0 0 48px; }
+
+      .screen.welcome {
+        height: 100%;
+        min-height: 0;
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      .product-page {
+        height: 100%;
+        max-height: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      .back-link { flex: 0 0 auto; margin: 0 0 6px; }
+      .product-intro {
+        flex: 1 1 auto;
+        min-height: 0;
+        padding: 6px 0 10px !important;
+        gap: clamp(22px, 3vw, 48px) !important;
+        align-items: center;
+      }
+      .product-copy { min-width: 0; }
+      .product-copy h1 {
+        font-size: clamp(32px, 3.3vw, 47px) !important;
+        line-height: 1.08 !important;
+        margin: 10px 0 12px !important;
+      }
+      .product-copy > p { font-size: 13px !important; line-height: 1.55 !important; }
+      .product-copy .button { margin-top: 14px !important; }
+      .demo-card { min-width: 0; max-height: 100%; padding: 12px !important; }
+      .demo-cover { padding: 12px !important; }
+      .demo-category { padding: 7px 0 !important; }
+      .demo-product { padding: 6px 0 !important; }
+      .demo-order { margin-top: 6px !important; padding: 7px !important; }
+      .demo-disclaimer { font-size: 9px !important; }
+
+      .benefits {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px !important;
+        padding: 12px 0 14px !important;
+        border-top: 1px solid rgba(255,255,255,.13);
+      }
+      .benefit { min-width: 0; gap: 9px !important; }
+      .benefit strong { font-size: 12px !important; }
+      .benefit p { font-size: 10px !important; line-height: 1.35 !important; }
+
+      .product-cta {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        column-gap: 20px;
+        align-items: center;
+        margin: 0 0 8px !important;
+        padding: 12px 18px !important;
+      }
+      .product-cta h2 { grid-column: 1; font-size: clamp(18px, 1.8vw, 24px) !important; }
+      .product-cta p { grid-column: 1; font-size: 11px !important; margin-top: 2px; }
+      .product-cta .button { grid-column: 2; grid-row: 1 / span 2; margin: 0 !important; min-height: 42px; }
+    }
+
+    /* Mobile: preserve natural scrolling to avoid hiding content */
+    @media (max-width: 760px) {
+      html, body { min-height: 100%; overflow-x: hidden !important; overflow-y: auto !important; }
+      body::before { inset: -20%; filter: blur(18px); animation-duration: 24s; }
+      .screen { padding-top: 32px; padding-bottom: 32px; }
+      .product-intro { padding-top: 20px; }
+      .product-cta { margin-bottom: 22px; }
+      .mark-square { box-shadow: 10px 10px 0 rgba(245,166,35,.08) !important; }
+    }
+
+    @media (max-height: 680px) and (min-width: 761px) {
+      .topbar { flex-basis: 58px; }
+      .simple-footer { flex-basis: 40px; }
+      .product-copy h1 { font-size: clamp(28px, 3vw, 39px) !important; }
+      .benefits { padding: 7px 0 8px !important; }
+      .product-cta { padding: 8px 14px !important; }
+      .demo-product { padding: 4px 0 !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before { animation: none; }
+    }
+  </style>
+
 </head>
 <body>
   <header class="topbar">
