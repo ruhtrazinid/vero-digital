@@ -239,12 +239,11 @@ async function showAdminDashboard() {
 }
 
 function setupQrCodeAndShare(slug) {
-  // Se estiver rodando via file:/// ou localhost, usa a URL oficial em produção
+  // Gera o link oficial com o parâmetro direto
   const isHttpRemote = window.location.protocol.startsWith("http") && !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1");
   const origin = isHttpRemote ? window.location.origin : "https://verodigitall.vercel.app";
   
-  // Link oficial encurtado
-  const publicUrl = `${origin}/p/${slug}`;
+  const publicUrl = `${origin}/cardapio.html?loja=${slug}`;
 
   const inputUrl = document.getElementById("storePublicUrlInput");
   inputUrl.value = publicUrl;
