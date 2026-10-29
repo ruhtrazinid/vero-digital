@@ -239,10 +239,12 @@ async function showAdminDashboard() {
 }
 
 function setupQrCodeAndShare(slug) {
-  const currentOrigin = window.location.origin;
+  // Se estiver rodando via file:/// ou localhost, usa a URL oficial em produção
+  const isHttpRemote = window.location.protocol.startsWith("http") && !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1");
+  const origin = isHttpRemote ? window.location.origin : "https://verodigitall.vercel.app";
   
-  // Link encurtado e profissional
-  const publicUrl = `${currentOrigin}/p/${slug}`;
+  // Link oficial encurtado
+  const publicUrl = `${origin}/p/${slug}`;
 
   const inputUrl = document.getElementById("storePublicUrlInput");
   inputUrl.value = publicUrl;
@@ -316,7 +318,7 @@ async function loadAndRenderProducts() {
     tr.innerHTML = `
       <td>${visualElement}</td>
       <td><strong>${prod.nome}</strong></td>
-      <td><span style="background: rgba(255,255,255,0.06); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${prod.categoria}</span></td>
+      <td><span style="background: rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.08); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">${prod.categoria}</span></td>
       <td><strong>R$ ${parseFloat(prod.preco).toFixed(2)}</strong></td>
       <td>
         <span class="status-badge ${prod.disponivel ? "badge-active" : "badge-inactive"}" onclick="handleToggleStatus('${prod.id}', ${prod.disponivel})">

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("bannerName").innerText = currentStore.nome;
   document.getElementById("bannerDesc").innerText = currentStore.segmento || "Cardápio Online Oficial";
   if (currentStore.endereco) {
-    document.getElementById("bannerAddress").innerText = `📍 ${currentStore.endereco}`;
+    document.getElementById("bannerAddress").innerHTML = `<i data-lucide="map-pin" style="width: 14px; height: 14px; color: #d97706;"></i> <span>${currentStore.endereco}</span>`;
   }
 
   // Busca produtos
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
-      renderProducts(e.target.value.toLowerCase());
+      renderProducts(e.target.value.toLowerCase().trim());
     });
   }
 
@@ -55,13 +55,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   btnOpenModal.addEventListener("click", () => {
     renderModalItems();
     checkoutModal.classList.add("active");
+    document.body.style.overflow = "hidden";
   });
 
   btnCloseModal.addEventListener("click", () => {
     checkoutModal.classList.remove("active");
+    document.body.style.overflow = "";
   });
 
-  // Alternância: Entrega vs Retirada
+  checkoutModal.addEventListener("click", (e) => {
+    if (e.target === checkoutModal) {
+      checkoutModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Alternância: Entrega vs Retirada (Estilos Tema Claro)
   const btnTypeDelivery = document.getElementById("btnTypeDelivery");
   const btnTypePickup = document.getElementById("btnTypePickup");
   const boxAddress = document.getElementById("boxAddress");
@@ -69,11 +78,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   btnTypeDelivery.addEventListener("click", () => {
     orderType = "delivery";
-    btnTypeDelivery.style.background = "var(--primary-light)";
-    btnTypeDelivery.style.borderColor = "var(--border-active)";
-    btnTypeDelivery.style.color = "#fbbf24";
+    btnTypeDelivery.style.background = "#fef3c7";
+    btnTypeDelivery.style.borderColor = "var(--primary)";
+    btnTypeDelivery.style.color = "#92400e";
 
-    btnTypePickup.style.background = "#090e1a";
+    btnTypePickup.style.background = "#f8fafc";
     btnTypePickup.style.borderColor = "var(--border-color)";
     btnTypePickup.style.color = "var(--text-muted)";
 
@@ -84,11 +93,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   btnTypePickup.addEventListener("click", () => {
     orderType = "pickup";
-    btnTypePickup.style.background = "var(--primary-light)";
-    btnTypePickup.style.borderColor = "var(--border-active)";
-    btnTypePickup.style.color = "#fbbf24";
+    btnTypePickup.style.background = "#fef3c7";
+    btnTypePickup.style.borderColor = "var(--primary)";
+    btnTypePickup.style.color = "#92400e";
 
-    btnTypeDelivery.style.background = "#090e1a";
+    btnTypeDelivery.style.background = "#f8fafc";
     btnTypeDelivery.style.borderColor = "var(--border-color)";
     btnTypeDelivery.style.color = "var(--text-muted)";
 
@@ -104,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     changeBox.style.display = e.target.value === "Dinheiro" ? "flex" : "none";
   });
 
-  // Envio do Pedido no padrão visual com Referência
+  // Envio do Pedido via WhatsApp
   const orderForm = document.getElementById("orderForm");
   orderForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -224,7 +233,13 @@ function renderProducts(searchTerm = "") {
   }
 
   if (filtered.length === 0) {
-    list.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem;">Nenhum produto encontrado.</p>`;
+    list.innerHTML = `
+      <div style="text-align: center; color: #64748b; padding: 3rem 1rem; background: #ffffff; border-radius: 16px; border: 1px dashed #cbd5e1;">
+        <i data-lucide="package-search" style="width: 36px; height: 36px; color: #d97706; margin: 0 auto 0.5rem auto; display: block;"></i>
+        <p style="font-weight: 700; font-size: 0.95rem; color: #0f172a;">Nenhum produto encontrado</p>
+        <span style="font-size: 0.8rem;">Tente pesquisar por outro termo</span>
+      </div>`;
+    if (window.lucide) lucide.createIcons();
     return;
   }
 
@@ -234,8 +249,8 @@ function renderProducts(searchTerm = "") {
     card.className = `menu-card ${!p.disponivel ? "unavailable" : ""}`;
 
     const thumbHtml = p.foto_url
-      ? `<div class="menu-thumb-wrapper"><img src="${p.foto_url}" class="menu-thumb" alt="${p.nome}"></div>`
-      : `<div class="menu-thumb-wrapper"><div class="menu-icon-placeholder"><i data-lucide="${p.icone || 'package'}" style="width: 28px; height: 28px; color: #fbbf24;"></i></div></div>`;
+      ? `<div class="menu-thumb-wrapper"><img src="${p.foto_url}" class="menu-thumb" alt="${p.nome}" loading="lazy"></div>`
+      : `<div class="menu-thumb-wrapper"><div class="menu-icon-placeholder"><i data-lucide="${p.icone || 'package'}" style="width: 28px; height: 28px; color: #d97706;"></i></div></div>`;
 
     card.innerHTML = `
       ${thumbHtml}
@@ -247,8 +262,11 @@ function renderProducts(searchTerm = "") {
         <div class="item-bottom">
           <span class="item-price">R$ ${parseFloat(p.preco).toFixed(2)}</span>
           ${p.disponivel 
-            ? `<button type="button" class="btn-add-item" onclick="addToCart('${p.id}')">+ Adicionar</button>` 
-            : `<span style="font-size: 0.72rem; color: #ef4444; font-weight: 700;">Esgotado</span>`
+            ? `<button type="button" class="btn-add-item" onclick="addToCart('${p.id}')">
+                <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+                <span>Adicionar</span>
+               </button>` 
+            : `<span style="font-size: 0.75rem; color: #dc2626; font-weight: 800; background: #fee2e2; padding: 0.25rem 0.6rem; border-radius: 6px;">Esgotado</span>`
           }
         </div>
       </div>
@@ -273,6 +291,12 @@ function addToCart(prodId) {
       preco: parseFloat(prod.preco),
       qtd: 1
     });
+  }
+
+  const bar = document.querySelector(".cart-bar-inner");
+  if (bar) {
+    bar.style.transform = "scale(1.03)";
+    setTimeout(() => { bar.style.transform = "scale(1)"; }, 150);
   }
 
   updateCartDisplay();
@@ -309,7 +333,7 @@ function renderModalItems() {
   if (!container) return;
 
   if (cart.length === 0) {
-    container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 1.5rem;">Sua sacola está vazia.</p>`;
+    container.innerHTML = `<p style="text-align: center; color: #64748b; padding: 2rem;">Sua sacola está vazia.</p>`;
     return;
   }
 
@@ -319,8 +343,8 @@ function renderModalItems() {
     row.className = "modal-item-row";
     row.innerHTML = `
       <div style="flex: 1; min-width: 0;">
-        <p style="font-size: 0.85rem; font-weight: 800; color: #fff; margin: 0;">${item.nome}</p>
-        <span style="font-size: 0.75rem; color: #fbbf24;">R$ ${(item.preco * item.qtd).toFixed(2)}</span>
+        <p style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2;">${item.nome}</p>
+        <span style="font-size: 0.78rem; color: #d97706; font-weight: 700;">R$ ${(item.preco * item.qtd).toFixed(2)}</span>
       </div>
       <div class="qty-counter">
         <button type="button" class="btn-qty-action" onclick="changeQty('${item.id}', -1)">−</button>

@@ -4,38 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Cardápio Digital | Pedidos Online</title>
+  
+  <!-- Fontes Oficiais Vero -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="cardapio-body">
 
-  <!-- BANNER TOPO DA LOJA -->
+  <!-- BANNER TOPO DO ESTABELECIMENTO -->
   <header class="store-banner" id="banner">
-    <span class="store-badge" id="badgeSegment">● Estabelecimento Aberto</span>
+    <span class="store-badge" id="badgeSegment">
+      <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+      <span>Aberto para Pedidos</span>
+    </span>
     <h1 class="store-title" id="bannerName">Carregando cardápio...</h1>
     <div class="store-meta">
-      <span id="bannerDesc">Consulte nossos produtos abaixo</span>
+      <span id="bannerDesc">Consulte as nossas opções abaixo</span>
     </div>
     <div class="store-address" id="bannerAddress"></div>
   </header>
 
-  <!-- BARRA DE BUSCA RÁPIDA -->
+  <!-- BARRA DE PESQUISA RÁPIDA -->
   <div class="search-wrapper">
     <i data-lucide="search" class="search-icon-fixed" style="width: 18px; height: 18px;"></i>
-    <input type="text" id="searchInput" class="search-input-field" placeholder="Buscar por lanche, bebida ou item...">
+    <input type="text" id="searchInput" class="search-input-field" placeholder="Procurar por produto ou categoria...">
   </div>
 
-  <!-- SLIDER HORIZONTAL DE CATEGORIAS -->
+  <!-- SLIDER DESLIZANTE DE CATEGORIAS -->
   <nav class="categories-slider-container">
     <div class="chips-wrapper" id="categoryChips"></div>
   </nav>
 
-  <!-- LISTA DE PRODUTOS -->
+  <!-- LISTAGEM DOS PRODUTOS -->
   <main class="catalog-container" id="productsList">
-    <p style="text-align: center; color: #94a3b8; padding: 3rem 1rem;">Carregando produtos...</p>
+    <p style="text-align: center; color: var(--text-muted); padding: 3rem 1rem;">Carregando os produtos...</p>
   </main>
 
-  <!-- BARRA INFERIOR FIXA DE CHECKOUT -->
+  <!-- BARRA FLUTUANTE DE CHECKOUT -->
   <aside class="fixed-cart-bar">
     <div class="cart-bar-inner">
       <div class="cart-bar-info">
@@ -49,67 +58,70 @@
     </div>
   </aside>
 
-  <!-- MODAL DE CHECKOUT / FINALIZAR PEDIDO -->
+  <!-- MODAL BOTTOM-SHEET DE FINALIZAÇÃO -->
   <div id="checkoutModal" class="checkout-modal-overlay">
     <div class="checkout-modal-box">
       
+      <!-- Indicador superior de puxar (mobile) -->
+      <div style="width: 38px; height: 4px; background: #cbd5e1; border-radius: 99px; margin: 0 auto 0.25rem auto;"></div>
+
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <i data-lucide="shopping-cart" style="color: #fbbf24; width: 20px; height: 20px;"></i>
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #fff;">Sua Sacola</h2>
+          <i data-lucide="shopping-cart" style="color: var(--primary); width: 20px; height: 20px;"></i>
+          <h2 style="font-size: 1.15rem; font-weight: 800; color: #0f172a;">A Sua Sacola</h2>
         </div>
-        <button type="button" id="btnCloseModal" class="btn-close-modal">✕</button>
+        <button type="button" id="btnCloseModal" class="btn-close-modal" aria-label="Fechar">✕</button>
       </div>
 
-      <!-- LISTA DE ITENS NA SACOLA -->
+      <!-- LISTAGEM DOS ITENS ADICIONADOS -->
       <div id="modalItemsList" style="max-height: 220px; overflow-y: auto;"></div>
 
-      <!-- RESUMO FINANCEIRO -->
+      <!-- RESUMO DE VALORES -->
       <div class="order-summary-box">
-        <div style="display: flex; justify-content: space-between; color: #94a3b8;">
+        <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
           <span>Subtotal:</span>
-          <span id="summarySubtotal" style="font-weight: 700; color: #fff;">R$ 0,00</span>
+          <span id="summarySubtotal" style="font-weight: 700; color: #0f172a;">R$ 0,00</span>
         </div>
-        <div style="display: flex; justify-content: space-between; color: #94a3b8;">
+        <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
           <span>Taxa de Entrega:</span>
-          <span id="summaryDelivery" style="font-weight: 700; color: #fff;">R$ 0,00</span>
+          <span id="summaryDelivery" style="font-weight: 700; color: #0f172a;">R$ 0,00</span>
         </div>
-        <div style="display: flex; justify-content: space-between; font-weight: 900; font-size: 1rem; margin-top: 0.25rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 0.4rem;">
-          <span>Total Geral:</span>
-          <span id="summaryTotal" style="color: #34d399;">R$ 0,00</span>
+        <div style="display: flex; justify-content: space-between; font-weight: 900; font-size: 1.05rem; margin-top: 0.25rem; border-top: 1px dashed #cbd5e1; padding-top: 0.5rem;">
+          <span style="color: #0f172a;">Total Geral:</span>
+          <span id="summaryTotal" style="color: #059669;">R$ 0,00</span>
         </div>
       </div>
 
-      <!-- DADOS DE ENTREGA / RETIRADA -->
-      <form id="orderForm" style="display: flex; flex-direction: column; gap: 0.85rem;">
+      <!-- FORMULÁRIO DE PEDIDO -->
+      <form id="orderForm" style="display: flex; flex-direction: column; gap: 0.9rem;">
         
-        <!-- SELEÇÃO: ENTREGA OU RETIRADA -->
+        <!-- SELEÇÃO ENTREGA / RETIRADA -->
         <div class="input-block">
           <label>Como deseja receber o pedido? *</label>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.25rem;">
-            <button type="button" id="btnTypeDelivery" style="padding: 0.65rem; border-radius: 8px; border: 1px solid var(--border-active); background: var(--primary-light); color: #fbbf24; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
-              <i data-lucide="bike" style="width: 16px; height: 16px;"></i>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.25rem;">
+            <button type="button" id="btnTypeDelivery" style="padding: 0.75rem; border-radius: 10px; border: 1px solid var(--primary); background: #fef3c7; color: #92400e; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.45rem; transition: all 0.2s;">
+              <i data-lucide="bike" style="width: 18px; height: 18px;"></i>
               <span>Entrega</span>
             </button>
-            <button type="button" id="btnTypePickup" style="padding: 0.65rem; border-radius: 8px; border: 1px solid var(--border-color); background: #090e1a; color: var(--text-muted); font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
-              <i data-lucide="store" style="width: 16px; height: 16px;"></i>
+            <button type="button" id="btnTypePickup" style="padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border-color); background: #f8fafc; color: var(--text-muted); font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.45rem; transition: all 0.2s;">
+              <i data-lucide="store" style="width: 18px; height: 18px;"></i>
               <span>Retirada</span>
             </button>
           </div>
         </div>
 
         <div class="input-block">
-          <label>Seu Nome *</label>
-          <input type="text" id="custName" class="input-modern" placeholder="Ex: João da Silva" required>
+          <label>O Seu Nome *</label>
+          <input type="text" id="custName" class="input-modern" placeholder="Ex: Lucas Gabriel" required>
         </div>
 
         <div class="input-block">
-          <label>Seu WhatsApp com DDD *</label>
+          <label>O Seu WhatsApp com DDD *</label>
           <input type="tel" id="custPhone" class="input-modern" placeholder="87999999999" required>
         </div>
 
-        <!-- BLOCO DE ENDEREÇO E REFERÊNCIA (SOME SE FOR RETIRADA) -->
-        <div id="boxAddress" style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <!-- ENDEREÇO & REFERÊNCIA -->
+        <div id="boxAddress" style="display: flex; flex-direction: column; gap: 0.9rem;">
           <div class="input-block">
             <label>Endereço de Entrega Completo *</label>
             <input type="text" id="custAddress" class="input-modern" placeholder="Rua, número e bairro" required>
@@ -135,9 +147,9 @@
           <input type="text" id="custChange" class="input-modern" placeholder="Ex: Troco para R$ 50">
         </div>
 
-        <button type="submit" class="btn-primary-pro" style="background: #10b981; color: #fff; margin-top: 0.5rem;">
+        <button type="submit" class="btn-primary-pro" style="background: #10b981; color: #fff; margin-top: 0.4rem; border-radius: 12px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);">
           <i data-lucide="send" style="width: 18px; height: 18px;"></i>
-          Enviar Pedido no WhatsApp
+          <span>Enviar Pedido via WhatsApp</span>
         </button>
       </form>
 
